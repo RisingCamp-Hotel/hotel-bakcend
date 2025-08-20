@@ -1,9 +1,8 @@
-package com.example.demo.repository.entity;
+package com.example.demo.repository.reservation.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
