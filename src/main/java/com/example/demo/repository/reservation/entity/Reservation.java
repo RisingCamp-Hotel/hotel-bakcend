@@ -1,5 +1,6 @@
 package com.example.demo.repository.reservation.entity;
 
+import com.example.demo.repository.hotel.entity.RoomNumber;
 import jakarta.persistence.*;
 import lombok.*;
 
