@@ -1,15 +1,16 @@
 package com.example.demo.controller.hotel;
 
+import com.example.demo.controller.hotel.dto.HotelDetailResponseDto;
 import com.example.demo.controller.hotel.dto.HotelResponseDto;
 import com.example.demo.service.application.HotelService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/hotels")
@@ -23,5 +24,14 @@ public class HotelController {
     public ResponseEntity<HotelResponseDto> hotel(@PathVariable Integer id){
         HotelResponseDto hotel = hotelService.findById(id);
         return ResponseEntity.ok(hotel);
+    }
+
+    @GetMapping("/{id}/details")
+    public ResponseEntity<HotelDetailResponseDto> hotelDetail(
+            @PathVariable Integer id,
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
+    ) {
+        HotelDetailResponseDto detail = hotelService.getHotelDetail(id, date);
+        return ResponseEntity.ok(detail);
     }
 }

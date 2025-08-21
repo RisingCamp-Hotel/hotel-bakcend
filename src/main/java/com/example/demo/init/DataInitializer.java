@@ -44,6 +44,7 @@ public class DataInitializer implements CommandLineRunner {
         roomService.save(new RoomCreateRequestDto("101호", "1층 방", 1));
         roomService.save(new RoomCreateRequestDto("201호", "2층 방", 2));
         roomService.save(new RoomCreateRequestDto("301호", "3층 방", 3));
+        roomService.save(new RoomCreateRequestDto("401호", "4층 방", 3));
 
         roomDateService.save(new RoomDateCreateRequestDto(
                 true,
@@ -55,6 +56,23 @@ public class DataInitializer implements CommandLineRunner {
                 false,
                 LocalDate.of(2025, 8, 22),
                 1
+        ));
+
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 1
+        ));
+        // 201호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 2
+        ));
+        // 301호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 3
+        ));
+
+        // 예약 불가 방~~
+        roomDateService.save(new RoomDateCreateRequestDto(
+                false, LocalDate.of(2025, 8, 25), 4
         ));
 
         roomDateService.save(new RoomDateCreateRequestDto(
