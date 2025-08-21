@@ -6,6 +6,7 @@ import com.example.demo.repository.reservation.entity.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -20,8 +21,8 @@ public class ReservationResponseDto {
     private String roomNumberName;
 
 //    private RoomNumber roomNumber;
-    private LocalTime checkInDate;
-    private LocalTime checkOutDate;
+    private LocalDate checkInDate;
+    private LocalDate checkOutDate;
     private Integer guestCount;
     private String status;
     private Double priceSnapshot;

@@ -4,8 +4,8 @@ import com.example.demo.repository.hotel.entity.RoomNumber;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -37,8 +37,8 @@ public class Reservation {
     // localtime?
 //    private LocalDateTime checkInDate;
 //    private LocalDateTime checkOutDate;
-    private LocalTime checkInDate;
-    private LocalTime checkOutDate;
+    private LocalDate checkInDate;
+    private LocalDate checkOutDate;
 
     private Integer guestCount;
     private Boolean isWalkIn;
@@ -56,8 +56,8 @@ public class Reservation {
     @Builder
     public static Reservation create(
             RoomNumber roomNumber,
-            LocalTime checkInDate,
-            LocalTime checkOutDate,
+            LocalDate checkInDate,
+            LocalDate checkOutDate,
             Integer guestCount,
             Boolean isWalkIn,
             LocalDateTime arrival,
