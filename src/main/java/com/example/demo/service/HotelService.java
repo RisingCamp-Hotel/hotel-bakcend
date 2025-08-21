@@ -16,13 +16,6 @@ import java.time.LocalTime;
 public class HotelService {
     private final HotelRepository hotelRepository;
 
-    @PostConstruct
-    public void init(){
-        this.save(new HotelCreateRequestDto("제주 신라호텔","서귀포시",5, "Jeju","제주최고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
-        this.save(new HotelCreateRequestDto("시그니엘","잠실",5, "Seoul","서울최고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
-        this.save(new HotelCreateRequestDto("포시즌스","동대문",5, "Seoul","서울쬐고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
-    }
-
 
 
     @Transactional(readOnly = true)
