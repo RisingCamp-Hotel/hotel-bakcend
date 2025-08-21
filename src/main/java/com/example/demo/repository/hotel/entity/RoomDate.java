@@ -17,22 +17,20 @@ public class RoomDate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private boolean isAvailable;
+    private boolean available;
 
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_number_id")
     private RoomNumber roomNumber;
 
 
-    public static RoomDate create(boolean isAvailable, LocalDate startDate, LocalDate endDate, RoomNumber roomNumber) {
+    public static RoomDate create(boolean available, LocalDate date, RoomNumber roomNumber) {
         return new RoomDate(
                 null,
-                isAvailable,
-                startDate,
-                endDate,
+                available,
+                date,
                 roomNumber
         );
     }
