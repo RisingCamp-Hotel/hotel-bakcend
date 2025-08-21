@@ -51,4 +51,27 @@ public class RoomDateRepositoryImpl implements RoomDateRepositoryCustom{
                 )
                 .fetch();
     }
+
+    @Override
+    public List<AvailableRoomRawDto> findAllRoomByHotelAndDate(Integer hotelId, LocalDate date) {
+        QRoomDate rd = QRoomDate.roomDate;
+        QRoomNumber rn = QRoomNumber.roomNumber;
+        QRoomType rt = QRoomType.roomType;
+
+        return queryFactory
+                .select(Projections.constructor(AvailableRoomRawDto.class,
+                        rt.hotel,
+                        rt,
+                        rd.date,
+                        rd.available
+                ))
+                .from(rd)
+                .join(rd.roomNumber, rn)
+                .join(rn.roomType, rt)
+                .where(
+                        rt.hotel.id.eq(hotelId)
+                                .and(rd.date.eq(date))
+                )
+                .fetch();
+    }
 }

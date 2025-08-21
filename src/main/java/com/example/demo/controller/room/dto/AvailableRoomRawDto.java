@@ -13,4 +13,5 @@ public class AvailableRoomRawDto {
     private Hotel hotel;
     private RoomType roomType;
     private LocalDate localDate;
+    private Boolean available;
 }

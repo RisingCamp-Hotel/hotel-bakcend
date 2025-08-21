@@ -12,4 +12,6 @@ public interface RoomDateRepositoryCustom {
     List<AvailableRoomRawDto> findAvailableRoomByDate(LocalDate date);
 
     List<RoomDate> findByRoomIdAndDateBetween(Integer roomNumberId, LocalDate startDate, LocalDate endDate);
+
+    List<AvailableRoomRawDto> findAllRoomByHotelAndDate(Integer hotelId, LocalDate date);
 }
