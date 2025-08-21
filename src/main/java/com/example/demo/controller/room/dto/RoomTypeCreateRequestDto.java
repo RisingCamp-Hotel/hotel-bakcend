@@ -13,12 +13,14 @@ public class RoomTypeCreateRequestDto {
     private String typeName;
     private Integer capacity;
     private Integer hotelId;
+    private Double basePrice;
 
     public RoomType from(Hotel hotel) {
         return RoomType.create(
                 typeName,
                 capacity,
-                hotel
+                hotel,
+                basePrice
         );
     }
 }

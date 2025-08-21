@@ -28,6 +28,7 @@ public class RoomPrice {
     private Season season;
 
 
+
     public static RoomPrice create(Double price,RoomType roomType, Season season){
         return new RoomPrice(
                 null,

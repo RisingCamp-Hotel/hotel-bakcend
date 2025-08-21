@@ -1,6 +1,5 @@
-package com.example.demo.controller.room;
+package com.example.demo.controller.room.dto;
 
-import com.example.demo.repository.hotel.entity.RoomDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
