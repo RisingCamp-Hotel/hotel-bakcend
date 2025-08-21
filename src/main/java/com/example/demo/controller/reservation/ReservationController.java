@@ -1,6 +1,8 @@
 package com.example.demo.controller.reservation;
 
-import com.example.demo.service.application.reservation.ReservationService;
+import com.example.demo.controller.reservation.dto.ReservationCreateRequestDto;
+import com.example.demo.controller.reservation.dto.ReservationResponseDto;
+import com.example.demo.service.application.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class ReservationController {
     private final ReservationService reservationService;
 
+    @PostMapping("")
+    public ResponseEntity<ReservationResponseDto> createBooking(@RequestBody ReservationCreateRequestDto request) {
+        ReservationResponseDto reservation = reservationService.save(request);
+        return ResponseEntity.ok(reservation);
+    }
 
 
     @DeleteMapping("/{reservationId}/{userId}")

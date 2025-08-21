@@ -38,4 +38,17 @@ public class RoomDateRepositoryImpl implements RoomDateRepositoryCustom{
                 )
                 .fetch();
     }
+
+    @Override
+    public List<RoomDate> findByRoomIdAndDateBetween(Integer roomNumberId, LocalDate startDate, LocalDate endDate) {
+        QRoomDate rd = QRoomDate.roomDate;
+        return queryFactory
+                .selectFrom(rd)
+                .where(
+                        rd.roomNumber.id.eq(roomNumberId)
+                                .and(rd.date.goe(startDate))
+                                .and(rd.date.loe(endDate))
+                )
+                .fetch();
+    }
 }
