@@ -13,6 +13,8 @@ import com.example.demo.repository.hotel.SeasonRepository;
 import com.example.demo.repository.hotel.entity.RoomPrice;
 import com.example.demo.repository.hotel.entity.RoomType;
 import com.example.demo.repository.hotel.entity.Season;
+import com.example.demo.repository.user.UserRepository;
+import com.example.demo.repository.user.entity.User;
 import com.example.demo.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -33,10 +35,14 @@ public class DataInitializer implements CommandLineRunner {
     private final RoomTypeRepository roomTypeRepository;
     private final HotelRepository hotelRepository;
     private final SeasonService seasonService;
+    private final UserRepository userRepository;
 
 
     @Override
     public void run(String... args) throws Exception{
+        User user = User.create("testuser", "testuser@email.com", "password123");
+        userRepository.save(user);
+
         hotelService.save(new HotelCreateRequestDto("제주 신라호텔","서귀포시",5, "Jeju","제주최고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
         hotelService.save(new HotelCreateRequestDto("시그니엘","잠실",5, "Seoul","서울최고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
         hotelService.save(new HotelCreateRequestDto("포시즌스","동대문",5, "Seoul","서울쬐고호텔", LocalTime.of(14,0), LocalTime.of(11,0)));
@@ -59,6 +65,48 @@ public class DataInitializer implements CommandLineRunner {
                 false,
                 LocalDate.of(2025, 8, 22),
                 1
+        ));
+
+
+        roomDateService.save(new RoomDateCreateRequestDto(
+                false,
+                LocalDate.of(2025, 8, 19),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                false,
+                LocalDate.of(2025, 8, 20),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 21),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 22),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 23),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 24),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 25),
+                2
+        ));
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 8, 26),
+                2
         ));
 
         seasonService.save(new SeasonCreateRequestDto(

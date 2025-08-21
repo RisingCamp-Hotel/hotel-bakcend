@@ -75,8 +75,12 @@ public class Reservation {
                 null,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
-                ReservationStatus.PENDING,
+                ReservationStatus.CONFIRMED,
                 priceSnapshot
         );
+    }
+
+    public void assignBooking(Booking booking) {
+        this.booking = booking;
     }
 }
