@@ -1,4 +1,4 @@
-package com.example.demo.service.reservation;
+package com.example.demo.service.application.reservation;
 
 import com.example.demo.controller.reservation.dto.ReservationCreateRequestDto;
 import com.example.demo.controller.reservation.dto.ReservationResponseDto;

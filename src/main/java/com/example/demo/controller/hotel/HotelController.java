@@ -1,7 +1,7 @@
 package com.example.demo.controller.hotel;
 
 import com.example.demo.controller.hotel.dto.HotelResponseDto;
-import com.example.demo.service.HotelService;
+import com.example.demo.service.application.HotelService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

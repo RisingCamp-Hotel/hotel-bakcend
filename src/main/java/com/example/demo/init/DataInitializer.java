@@ -2,7 +2,6 @@ package com.example.demo.init;
 
 import com.example.demo.controller.hotel.dto.HotelCreateRequestDto;
 import com.example.demo.controller.hotel.dto.SeasonCreateRequestDto;
-import com.example.demo.controller.room.RoomTypeController;
 import com.example.demo.controller.room.dto.RoomCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomDateCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomTypeCreateRequestDto;
@@ -10,10 +9,7 @@ import com.example.demo.repository.hotel.HotelRepository;
 import com.example.demo.repository.hotel.RoomPriceRepository;
 import com.example.demo.repository.hotel.RoomTypeRepository;
 import com.example.demo.repository.hotel.SeasonRepository;
-import com.example.demo.repository.hotel.entity.RoomPrice;
-import com.example.demo.repository.hotel.entity.RoomType;
-import com.example.demo.repository.hotel.entity.Season;
-import com.example.demo.service.*;
+import com.example.demo.service.application.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -60,6 +56,13 @@ public class DataInitializer implements CommandLineRunner {
                 LocalDate.of(2025, 8, 22),
                 1
         ));
+
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 9, 22),
+                1
+        ));
+
 
         seasonService.save(new SeasonCreateRequestDto(
                 true,

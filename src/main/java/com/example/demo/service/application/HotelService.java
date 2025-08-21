@@ -1,15 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.service.application;
 
 import com.example.demo.controller.hotel.dto.HotelCreateRequestDto;
 import com.example.demo.controller.hotel.dto.HotelResponseDto;
 import com.example.demo.repository.hotel.HotelRepository;
 import com.example.demo.repository.hotel.entity.Hotel;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalTime;
 
 @Service
 @RequiredArgsConstructor

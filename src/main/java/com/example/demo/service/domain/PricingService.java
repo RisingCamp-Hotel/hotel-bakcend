@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.domain;
 
 import com.example.demo.repository.hotel.SeasonRepository;
 import com.example.demo.repository.hotel.entity.RoomType;

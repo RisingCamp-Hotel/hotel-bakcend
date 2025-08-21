@@ -2,7 +2,7 @@ package com.example.demo.controller.hotel;
 
 import com.example.demo.controller.hotel.dto.SeasonCreateRequestDto;
 import com.example.demo.controller.hotel.dto.SeasonResponseDto;
-import com.example.demo.service.SeasonService;
+import com.example.demo.service.application.SeasonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
