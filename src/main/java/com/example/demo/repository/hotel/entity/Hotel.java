@@ -43,10 +43,10 @@ public class Hotel {
     private List<RoomType> roomTypes = new ArrayList<>();
 
     public static Hotel create(String hotelName, String address, Integer hotelRating,
-                               String city, String description, Double rate, LocalTime checkInTime, LocalTime checkOutTime) {
+                               String city, String description, LocalTime checkInTime, LocalTime checkOutTime) {
         return new Hotel(
                 null, hotelName, address, hotelRating, city, description,
-                rate,
+                0.0,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 checkInTime,
