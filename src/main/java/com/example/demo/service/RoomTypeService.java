@@ -49,7 +49,8 @@ public class RoomTypeService {
         RoomType roomType = RoomType.create(
                 requestDto.getTypeName(),
                 requestDto.getCapacity(),
-                hotel
+                hotel,
+                requestDto.getBasePrice()
         );
 
         RoomType created = roomTypeRepository.save(roomType);

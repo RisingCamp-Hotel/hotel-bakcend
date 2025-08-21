@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.controller.room.AvailableRoomResponseDto;
+import com.example.demo.controller.room.dto.AvailableRoomRawDto;
+import com.example.demo.controller.room.dto.AvailableRoomResponseDto;
 import com.example.demo.controller.room.dto.RoomDateCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomDateResponseDto;
 import com.example.demo.repository.hotel.RoomDateRepository;
@@ -19,6 +20,7 @@ import java.util.List;
 public class RoomDateService {
     private final RoomDateRepository roomDateRepository;
     private final RoomNumberRepository roomNumberRepository;
+    private final PricingService pricingService;
 
     @Transactional(readOnly = true)
     public List<RoomDateResponseDto> findAll() {
@@ -43,6 +45,17 @@ public class RoomDateService {
 
     @Transactional(readOnly = true)
     public List<AvailableRoomResponseDto> findAvailableByDate(LocalDate date) {
-        return roomDateRepository.findAvailableRoomByDate(date);
+        List<AvailableRoomRawDto> rawList = roomDateRepository.findAvailableRoomByDate(date);
+
+        return rawList.stream()
+                .map(raw -> new AvailableRoomResponseDto(
+                        raw.getHotel().getHotelName(),
+                        raw.getRoomType().getTypeName(),
+                        pricingService.calculate(date, raw.getRoomType()),
+                        raw.getLocalDate()
+                ))
+                .toList();
     }
+
+
 }

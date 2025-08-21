@@ -18,10 +18,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final UserRepository userRepository;
 
-    @Transactional
-    public ReservationResponseDto save(ReservationCreateRequestDto request) {
-        // 날짜, 호텔, 객실타입, 호수, 유저아이디
-    }
+
 
     @Transactional
     public void delete(Integer reservationId, Integer userId) {

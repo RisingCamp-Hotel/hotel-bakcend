@@ -32,15 +32,18 @@ public class RoomType {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomType")
     private List<RoomNumber> roomNumbers;
 
+    private Double basePrice;
 
-    public static RoomType create(String typeName, Integer capacity, Hotel hotel){
+
+    public static RoomType create(String typeName, Integer capacity, Hotel hotel, Double basePrice){
         return new RoomType(
                 null,
                 typeName,
                 capacity,
                 hotel,
                 new ArrayList<>(),
-                new ArrayList<>()
+                new ArrayList<>(),
+                basePrice
         );
     }
 

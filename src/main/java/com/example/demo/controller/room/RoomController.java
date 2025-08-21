@@ -1,5 +1,6 @@
 package com.example.demo.controller.room;
 
+import com.example.demo.controller.room.dto.AvailableRoomResponseDto;
 import com.example.demo.controller.room.dto.RoomResponseDto;
 import com.example.demo.service.RoomDateService;
 import com.example.demo.service.RoomService;
