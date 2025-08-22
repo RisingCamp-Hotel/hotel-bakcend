@@ -1,4 +1,4 @@
-package com.example.demo.service.reservation;
+package com.example.demo.service.application;
 
 import com.example.demo.controller.reservation.dto.ReservationCreateRequestDto;
 import com.example.demo.controller.reservation.dto.ReservationResponseDto;
@@ -16,7 +16,7 @@ import com.example.demo.repository.reservation.entity.Booking;
 import com.example.demo.repository.reservation.entity.Reservation;
 import com.example.demo.repository.user.UserRepository;
 import com.example.demo.repository.user.entity.User;
-import com.example.demo.service.PricingService;
+import com.example.demo.service.domain.PricingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -65,7 +65,7 @@ public class ReservationService {
         }
 
         // 예약 가능
-            // 재고 확인
+        // 재고 확인
         List<RoomDate> dates = roomDateRepository.findByRoomIdAndDateBetween(
                 request.getRoomNumberId(),
                 request.getCheckInDate(),
@@ -118,7 +118,7 @@ public class ReservationService {
                 .orElseThrow(() -> new RuntimeException("not exists user"));
 
         // 예약자 본인 확인
-            // reservatui -> booking -> user로 검사?
+        // reservatui -> booking -> user로 검사?
         if (!reservation.getBooking().getUser().getId().equals(userId)) {
             throw new IllegalArgumentException("You are not the owner of this reservation.");
         }

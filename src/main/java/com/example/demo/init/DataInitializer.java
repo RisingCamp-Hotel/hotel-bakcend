@@ -2,20 +2,12 @@ package com.example.demo.init;
 
 import com.example.demo.controller.hotel.dto.HotelCreateRequestDto;
 import com.example.demo.controller.hotel.dto.SeasonCreateRequestDto;
-import com.example.demo.controller.room.RoomTypeController;
 import com.example.demo.controller.room.dto.RoomCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomDateCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomTypeCreateRequestDto;
-import com.example.demo.repository.hotel.HotelRepository;
-import com.example.demo.repository.hotel.RoomPriceRepository;
-import com.example.demo.repository.hotel.RoomTypeRepository;
-import com.example.demo.repository.hotel.SeasonRepository;
-import com.example.demo.repository.hotel.entity.RoomPrice;
-import com.example.demo.repository.hotel.entity.RoomType;
-import com.example.demo.repository.hotel.entity.Season;
+import com.example.demo.service.application.*;
 import com.example.demo.repository.user.UserRepository;
 import com.example.demo.repository.user.entity.User;
-import com.example.demo.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -30,10 +22,6 @@ public class DataInitializer implements CommandLineRunner {
     private final RoomTypeService roomTypeService;
     private final RoomService roomService;
     private final RoomDateService roomDateService;
-    private final RoomPriceRepository roomPriceRepository;
-    private final SeasonRepository seasonRepository;
-    private final RoomTypeRepository roomTypeRepository;
-    private final HotelRepository hotelRepository;
     private final SeasonService seasonService;
     private final UserRepository userRepository;
 
@@ -54,6 +42,7 @@ public class DataInitializer implements CommandLineRunner {
         roomService.save(new RoomCreateRequestDto("101호", "1층 방", 1));
         roomService.save(new RoomCreateRequestDto("201호", "2층 방", 2));
         roomService.save(new RoomCreateRequestDto("301호", "3층 방", 3));
+        roomService.save(new RoomCreateRequestDto("401호", "4층 방", 3));
 
         roomDateService.save(new RoomDateCreateRequestDto(
                 true,
@@ -108,6 +97,30 @@ public class DataInitializer implements CommandLineRunner {
                 LocalDate.of(2025, 8, 26),
                 2
         ));
+
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 1
+        ));
+        // 201호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 2
+        ));
+        // 301호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 3
+        ));
+
+        // 예약 불가 방~~
+        roomDateService.save(new RoomDateCreateRequestDto(
+                false, LocalDate.of(2025, 8, 25), 4
+        ));
+
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true,
+                LocalDate.of(2025, 9, 22),
+                1
+        ));
+
 
         seasonService.save(new SeasonCreateRequestDto(
                 true,

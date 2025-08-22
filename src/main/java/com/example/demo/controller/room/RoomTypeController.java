@@ -1,7 +1,7 @@
 package com.example.demo.controller.room;
 
 import com.example.demo.controller.room.dto.RoomTypeResponseDto;
-import com.example.demo.service.RoomTypeService;
+import com.example.demo.service.application.RoomTypeService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

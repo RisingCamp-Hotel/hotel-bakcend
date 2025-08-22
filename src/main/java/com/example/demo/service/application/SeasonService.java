@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.application;
 
 import com.example.demo.controller.hotel.dto.SeasonCreateRequestDto;
 import com.example.demo.controller.hotel.dto.SeasonResponseDto;

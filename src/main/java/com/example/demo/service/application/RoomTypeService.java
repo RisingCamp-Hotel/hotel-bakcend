@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.application;
 
 import com.example.demo.controller.room.dto.RoomTypeCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomTypeResponseDto;
@@ -6,7 +6,6 @@ import com.example.demo.repository.hotel.HotelRepository;
 import com.example.demo.repository.hotel.RoomTypeRepository;
 import com.example.demo.repository.hotel.entity.Hotel;
 import com.example.demo.repository.hotel.entity.RoomType;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
