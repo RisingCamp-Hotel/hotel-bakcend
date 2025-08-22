@@ -39,10 +39,19 @@ public class DataInitializer implements CommandLineRunner {
         roomTypeService.save(new RoomTypeCreateRequestDto("디럭스",4,1,400000.0));
         roomTypeService.save(new RoomTypeCreateRequestDto("스위트",8,1,800000.0));
 
+        roomTypeService.save(new RoomTypeCreateRequestDto("스탠다드",2,2,200000.0));
+        roomTypeService.save(new RoomTypeCreateRequestDto("디럭스",4,2,400000.0));
+        roomTypeService.save(new RoomTypeCreateRequestDto("스위트",8,2,800000.0));
+
         roomService.save(new RoomCreateRequestDto("101호", "1층 방", 1));
         roomService.save(new RoomCreateRequestDto("201호", "2층 방", 2));
         roomService.save(new RoomCreateRequestDto("301호", "3층 방", 3));
         roomService.save(new RoomCreateRequestDto("401호", "4층 방", 3));
+        roomService.save(new RoomCreateRequestDto("바닥방", "1층 방", 4));
+        roomService.save(new RoomCreateRequestDto("중간방", "2층 방", 5));
+        roomService.save(new RoomCreateRequestDto("고층방", "3층 방", 6));
+        roomService.save(new RoomCreateRequestDto("고층방", "4층 방", 6));
+
 
         roomDateService.save(new RoomDateCreateRequestDto(
                 true,
@@ -131,11 +140,11 @@ public class DataInitializer implements CommandLineRunner {
 
         // 포시즌스 301호
         roomDateService.save(new RoomDateCreateRequestDto(
-                true, LocalDate.of(2025, 8, 25), 3
+                true, LocalDate.of(2025, 8, 25), 5
         ));
         // 포시즌스 401호
         roomDateService.save(new RoomDateCreateRequestDto(
-                true, LocalDate.of(2025, 8, 25), 4
+                true, LocalDate.of(2025, 8, 25), 6
         ));
 
 
