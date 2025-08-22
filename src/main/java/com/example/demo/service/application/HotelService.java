@@ -62,7 +62,7 @@ public class HotelService {
         // 특정 호텔의 모든 룸타입 + date 기준 예약 가능 여부 조회
         List<AvailableRoomRawDto> rawList = roomDateRepository.findAllRoomByHotelAndDate(hotelId, date);
 
-        // 룸타입별 DTO 변환 ...하 힘들당
+        // 룸타입별 DTO 변환
         List<RoomAvailabilityDto> roomDto = rawList.stream()
                 .map(raw -> RoomAvailabilityDto.from(
                         raw.getRoomType(),
