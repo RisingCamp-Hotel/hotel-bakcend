@@ -63,27 +63,25 @@ public class RoomDateService {
                         ))
                 ));
 
-        // Dto 로 반환해야되니.. 변환 + 최저가 로직
+
         return groupedByHotel.entrySet().stream()
                 .map(entry -> {
+
                     Hotel hotel = entry.getKey();
+
                     Optional<AvailableRoomRawDto> maybeRoom = entry.getValue();
 
-                    if (maybeRoom.isPresent()) {
-                        AvailableRoomRawDto raw = maybeRoom.get();
-                        Double minPrice = pricingService.calculate(date, raw.getRoomType());
-                        return HotelSimpleResponseDto.available(
-                                hotel,
-                                raw.getRoomType(),
-                                minPrice
-                        );
-                    } else {
-                        return HotelSimpleResponseDto.unavailable(hotel,null, null);
-                    }
-                })
-                .toList();
+                    return maybeRoom.map((raw) -> {
+                                Double minPrice = pricingService.calculate(date, raw.getRoomType());
+                                return HotelSimpleResponseDto.available(
+                                        hotel,
+                                        raw.getRoomType(),
+                                        minPrice
+                                );
+                            }
+                    ).orElse(HotelSimpleResponseDto.unavailable(hotel, null, null));
+                }).toList();
     }
-
 
 
 }
