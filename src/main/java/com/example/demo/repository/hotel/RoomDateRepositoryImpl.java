@@ -27,7 +27,8 @@ public class RoomDateRepositoryImpl implements RoomDateRepositoryCustom{
                 .select(Projections.constructor(AvailableRoomRawDto.class,
                         rt.hotel,
                         rt,
-                        rd.date
+                        rd.date,
+                        rd.available
                 ))
                 .from(rd)
                 .join(rd.roomNumber, rn)
