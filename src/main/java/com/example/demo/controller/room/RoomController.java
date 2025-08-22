@@ -1,5 +1,6 @@
 package com.example.demo.controller.room;
 
+import com.example.demo.controller.hotel.dto.HotelSimpleResponseDto;
 import com.example.demo.controller.room.dto.AvailableRoomResponseDto;
 import com.example.demo.controller.room.dto.RoomResponseDto;
 import com.example.demo.service.application.RoomDateService;
@@ -29,9 +30,9 @@ public class RoomController {
     }
 
     @GetMapping("/available")
-    public ResponseEntity<List<AvailableRoomResponseDto>> getAvailableRooms(
+    public ResponseEntity<List<HotelSimpleResponseDto>> getAvailableHotels(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
     ) {
-        return ResponseEntity.ok(roomDateService.findAvailableByDate(date));
+        return ResponseEntity.ok(roomDateService.findHotelSimpleByDate(date));
     }
 }

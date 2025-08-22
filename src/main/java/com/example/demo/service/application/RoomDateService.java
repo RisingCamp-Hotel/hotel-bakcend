@@ -1,11 +1,13 @@
 package com.example.demo.service.application;
 
+import com.example.demo.controller.hotel.dto.HotelSimpleResponseDto;
 import com.example.demo.controller.room.dto.AvailableRoomRawDto;
 import com.example.demo.controller.room.dto.AvailableRoomResponseDto;
 import com.example.demo.controller.room.dto.RoomDateCreateRequestDto;
 import com.example.demo.controller.room.dto.RoomDateResponseDto;
 import com.example.demo.repository.hotel.RoomDateRepository;
 import com.example.demo.repository.hotel.RoomNumberRepository;
+import com.example.demo.repository.hotel.entity.Hotel;
 import com.example.demo.repository.hotel.entity.RoomDate;
 import com.example.demo.repository.hotel.entity.RoomNumber;
 import com.example.demo.service.domain.PricingService;
@@ -14,7 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -45,18 +51,39 @@ public class RoomDateService {
     }
 
     @Transactional(readOnly = true)
-    public List<AvailableRoomResponseDto> findAvailableByDate(LocalDate date) {
+    public List<HotelSimpleResponseDto> findHotelSimpleByDate(LocalDate date) {
         List<AvailableRoomRawDto> rawList = roomDateRepository.findAvailableRoomByDate(date);
 
-        return rawList.stream()
-                .map(raw -> new AvailableRoomResponseDto(
-                        raw.getHotel().getHotelName(),
-                        raw.getRoomType().getTypeName(),
-                        pricingService.calculate(date, raw.getRoomType()),
-                        raw.getLocalDate()
-                ))
+        // 호텔별로 최소가를 추출
+        Map<Hotel, Optional<AvailableRoomRawDto>> groupedByHotel = rawList.stream()
+                .collect(Collectors.groupingBy(
+                        AvailableRoomRawDto::getHotel,
+                        Collectors.minBy(Comparator.comparing(
+                                raw -> pricingService.calculate(date, raw.getRoomType())
+                        ))
+                ));
+
+        // Dto 로 반환해야되니.. 변환 + 최저가 로직
+        return groupedByHotel.entrySet().stream()
+                .map(entry -> {
+                    Hotel hotel = entry.getKey();
+                    Optional<AvailableRoomRawDto> maybeRoom = entry.getValue();
+
+                    if (maybeRoom.isPresent()) {
+                        AvailableRoomRawDto raw = maybeRoom.get();
+                        Double minPrice = pricingService.calculate(date, raw.getRoomType());
+                        return HotelSimpleResponseDto.available(
+                                hotel,
+                                raw.getRoomType(),
+                                minPrice
+                        );
+                    } else {
+                        return HotelSimpleResponseDto.unavailable(hotel,null, null);
+                    }
+                })
                 .toList();
     }
+
 
 
 }
