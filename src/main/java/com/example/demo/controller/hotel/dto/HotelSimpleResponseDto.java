@@ -30,8 +30,8 @@ public class HotelSimpleResponseDto {
         return new HotelSimpleResponseDto(
                 hotel.getId(),
                 hotel.getHotelName(),
-                roomType.getTypeName(),
-                minPrice,
+                null,
+                null,
                 false
         );
     }

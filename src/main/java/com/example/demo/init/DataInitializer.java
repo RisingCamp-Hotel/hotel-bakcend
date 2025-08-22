@@ -129,6 +129,15 @@ public class DataInitializer implements CommandLineRunner {
                 1 // 호텔 id
         ));
 
+        // 포시즌스 301호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 3
+        ));
+        // 포시즌스 401호
+        roomDateService.save(new RoomDateCreateRequestDto(
+                true, LocalDate.of(2025, 8, 25), 4
+        ));
+
 
     }
 
